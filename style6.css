@@ -1,0 +1,241 @@
+*{box-sizing: border-box;}
+
+/* teko-300 - latin */
+@font-face {
+  font-family: 'Teko';
+  font-style: normal;
+  font-weight: 300;
+  src: url('fonts/teko-v10-latin-300.eot'); /* IE9 Compat Modes */
+  src: local('Teko Light'), local('Teko-Light'),
+       url('fonts/teko-v10-latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/teko-v10-latin-300.woff2') format('woff2'), /* Super Modern Browsers */
+       url('fonts/teko-v10-latin-300.woff') format('woff'), /* Modern Browsers */
+       url('fonts/teko-v10-latin-300.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('fonts/teko-v10-latin-300.svg#Teko') format('svg'); /* Legacy iOS */
+}
+
+
+body{
+  width:100vw;
+  height:100vh;
+  margin:0;
+  padding: 0;
+  background-color: #000;
+}
+
+canvas{
+  height:100vh;
+  width:100vw;
+  background-color: #000000;
+  position: fixed;
+}
+.wrapper{
+  height:100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper,.output{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.output{
+  width:80%;
+  height:90vh;
+  background-color: #000;
+  overflow:hidden; 
+  display: flex;
+  margin:0px;
+  flex-wrap:wrap;
+  align-content: center;
+  justify-content: center;
+  
+}
+
+.box{
+  overflow:hidden;
+  height:5vw;
+  background-color: red;
+  width:5vw;
+  /* 100/20 = 5 */
+  height:var(--size);
+  width:var(--size);
+  cursor: pointer;
+  
+}
+.box .box__circle{
+  height:calc(var(--size) * 2);
+  width:calc(var(--size) * 2);
+  border-radius:50%;
+  background-color: #fff;
+  border:solid 1.5vw;
+  box-sizing:border-box;
+}
+
+
+.box__text{
+  text-transform: uppercase;
+  font-weight: 300;
+  margin-bottom: 20px;
+  transform-origin: center; 
+  position: fixed;
+  height:100vh;
+  width:80vw;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction:column;
+  z-index: 10;
+}
+
+textarea,p{
+  font-size: 5vw;
+  font-family: 'Teko', sans-serif;
+  text-align: center;
+  background-color: transparent;
+  color:yellow;
+  margin: 0;
+  line-height: 5vw;
+}
+@media (max-width: 599px) {
+  textarea,p{
+    font-size: 10vw;
+    line-height: 10vw;
+  }
+  .intro{
+    width:90%;
+  }
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: yellow;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: yellow;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: yellow;
+}
+
+textarea{
+  width: 100%;
+  margin-bottom: 10px;
+  border-color: transparent;
+  overflow: visible;
+  height:auto;
+  
+}
+textarea:focus{
+  outline:red;
+  border-color: transparent;
+}
+
+
+button{
+  background-color: #fff;
+  color:#000;
+  display: inline;
+  outline: none;
+  border:none;
+  padding:10px 20px;
+  border-radius:5px;
+  font-family: 'Teko', sans-serif;
+  font-size: 25px;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+
+.button--start{
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50vw;
+}
+
+.download{
+  border-radius: 50vw;
+}
+
+footer{
+  position: fixed;
+  z-index: 3;
+  transition:all 0.5s;
+  justify-content: space-between;
+  align-items: flex-start;
+  display: flex;
+  top:2vw;
+  left:2vw;
+  right:2vw;
+  height:100vh;
+  transition: all 0.3s;
+  pointer-events: none;
+}
+
+.footer__options button{
+  width:50px;
+  height:50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:5px;
+  margin-bottom: 20px;
+  position: relative;
+}
+button svg{
+  width:90%;
+}
+.footer__options button:hover span{
+  display: block;
+}
+
+.footer__options span{
+  position: absolute;
+  left:125%;
+  background-color: #fff;
+  font-size: 20px;
+  width: 120px;
+  display: inline-block;
+  border-radius: 5px;
+  top:0;
+  display: none;
+}
+
+.toilette{
+  position: absolute;
+  bottom: 0;
+  right:5vw;
+  width:15vw;
+}
+
+[data-counter="0"] {
+  transform:rotate(90deg);
+}
+
+[data-counter="1"] {
+  transform:rotate(180deg);
+}
+[data-counter="2"] {
+  transform:rotate(270deg);
+}
+[data-counter="3"] {
+  transform:rotate(0deg);
+}
+[data-counter="4"] {
+  transform:rotate(0deg); 
+}
+[data-counter="4"] .box__circle{display: none;}
+
+[data-counter="0"] .box__circle,
+[data-counter="1"] .box__circle,
+[data-counter="2"] .box__circle,
+[data-counter="3"] .box__circle{display: block;}
+
+
+
